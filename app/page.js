@@ -1,6 +1,6 @@
 import Carousel from "@/components/carousel/carousel";
 
-import Products from "@/components/product/products";
+import Products from "@/app/features/product/products";
 
 const HomePage = () => {
   return (
