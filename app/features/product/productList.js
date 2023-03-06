@@ -27,7 +27,12 @@ const ProductList = ({ id }) => {
         <Link
           href={{
             pathname: `/productDetails/${item.id}`,
-            query: { name: item.name, author: item.author },
+            query: {
+              name: item.name,
+              author: item.author,
+              categoryId: item.categoryId,
+              productId : item.id
+            },
           }}
         >
           <div key={item.id} className={"w-80 h-52 flex  bg-primaryOne"}>

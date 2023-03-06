@@ -1,5 +1,6 @@
 import categorySearchSlice from "@/reducer/categorySearchSlice";
 import categorySlice from "@/reducer/categorySlice";
+import productDetailSlice from "@/reducer/productDetailSlice";
 import productsSlice from "@/reducer/productsSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
@@ -9,6 +10,7 @@ export function categoriesStore() {
       categories: categorySlice,
       products: productsSlice,
       category: categorySearchSlice,
+      productDetail: productDetailSlice,
     },
   });
 }
