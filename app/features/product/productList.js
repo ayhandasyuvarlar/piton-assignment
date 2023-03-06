@@ -24,11 +24,17 @@ const ProductList = ({ id }) => {
   return (
     <div className="flex justify-start gap-5 w-full border mt-3">
       {uniqueData.slice(0, 4).map((item) => (
-        <Link href={"/"}>
+        <Link
+          href={{
+            pathname: `/productDetails/${item.id}`,
+            query: { name: item.name, author: item.author },
+          }}
+        >
           <div key={item.id} className={"w-80 h-52 flex  bg-primaryOne"}>
             <div className="w-2/4 h-52 flex items-center justify-center">
               <img
-                src={`https://assign-api.piton.com.tr/api/rest/cover_image/${item.cover}`}
+                // src={`https://assign-api.piton.com.tr/api/rest/cover_image/${item.cover}`}
+                src="/authImage.jpeg"
                 alt={item.name}
                 className={"w-32 h-44 object-cover rounded"}
               />

@@ -39,12 +39,16 @@ const Products = () => {
                     >
                       {item.name}
                     </h1>
-                    <Link href={{
-                      pathname: `/${item.name}`,
-                      query: {
-                        category: item.id,
-                      },
-                    }}>View All</Link>
+                    <Link
+                      href={{
+                        pathname: `/category/${item.name}`,
+                        query: {
+                          category: item.id,
+                        },
+                      }}
+                    >
+                      View All
+                    </Link>
                   </div>
                   <ProductList id={item.id}></ProductList>
                 </aside>
