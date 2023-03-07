@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const ProductList = ({ id }) => {
+const ProductList = ({ id, categoryName }) => {
   const { products } = useSelector(selectProducts);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,6 +31,7 @@ const ProductList = ({ id }) => {
               name: item.name,
               author: item.author,
               categoryId: item.categoryId,
+              categoryName: categoryName,
             },
           }}
         >

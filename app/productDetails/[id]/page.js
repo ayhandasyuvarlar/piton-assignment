@@ -26,7 +26,12 @@ const productDetail = ({ params, searchParams }) => {
       {!loading && !error && (
         <section className="flex flex-col w-11/12 h-auto gap-10 m-auto mt-12 mb-16">
           <div className="flex items-center gap-2">
-            <Link href={"#"} className={"flex items-center gap-2"}>
+            <Link  href={{
+                        pathname: `/category/${searchParams.categoryName}`,
+                        query: {
+                          category: categoryIdx,
+                        },
+                      }} className={"flex items-center gap-2"}>
               <AiOutlineLeft />{" "}
               <h1 className="text-2xl font-bold text-colorOne">Book Details</h1>
             </Link>
