@@ -31,11 +31,10 @@ const ProductList = ({ id }) => {
               name: item.name,
               author: item.author,
               categoryId: item.categoryId,
-              productId : item.id
             },
           }}
         >
-          <div key={item.id} className={"w-80 h-52 flex  bg-primaryOne"}>
+          <div key={item.id} className={"w-80  h-52 flex  bg-primaryOne"}>
             <div className="w-2/4 h-52 flex items-center justify-center">
               <img
                 // src={`https://assign-api.piton.com.tr/api/rest/cover_image/${item.cover}`}

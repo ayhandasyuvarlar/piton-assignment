@@ -2,19 +2,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchProductsDetails = createAsyncThunk(
   "products/getProductDetail",
-  async (categoryId, productId) => {
+  async (data) => {
+    const { categoryIdx, productIdx } = data;
     const response = await fetch(
-      `https://assign-api.piton.com.tr/api/rest/products/${categoryId}`
+      `https://assign-api.piton.com.tr/api/rest/products/${categoryIdx}`
     );
 
     const { product } = await response.json();
     const loadedProducts = product.map((item) => {
       // burada gelen ürünlere category id ekliyorum
-      item.categoryId = categoryId;
+      item.categoryId = categoryIdx;
       return item;
     });
+
     // burada ise gelen product id ile gelen data ki id eşleştirip ürünü buluyorum
-    const loadedProduct = loadedProducts.filter((item) => item.id ===15);
+    const loadedProduct = loadedProducts.find((item) => item.id === productIdx);
     if (loadedProduct) {
       return loadedProduct;
     }
@@ -23,7 +25,7 @@ export const fetchProductsDetails = createAsyncThunk(
 );
 
 const initialState = {
-  productsDetail: [],
+  productDetail: [],
   loading: false,
   error: null,
 };
@@ -39,7 +41,7 @@ const productDetail = createSlice({
     builder.addCase(fetchProductsDetails.fulfilled, (state, action) => {
       state.loading = false;
 
-      state.productsDetail = action.payload;
+      state.productDetail = action.payload;
     });
     builder.addCase(fetchProductsDetails.rejected, (state, action) => {
       state.loading = false;
