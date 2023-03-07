@@ -1,3 +1,4 @@
+import categoryProductsSlice from "@/reducer/categoryProductsSlice";
 import categorySearchSlice from "@/reducer/categorySearchSlice";
 import categorySlice from "@/reducer/categorySlice";
 import productDetailSlice from "@/reducer/productDetailSlice";
@@ -11,6 +12,7 @@ export function categoriesStore() {
       products: productsSlice,
       category: categorySearchSlice,
       productDetail: productDetailSlice,
+      categoryProducts : categoryProductsSlice
     },
   });
 }

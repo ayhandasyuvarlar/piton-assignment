@@ -50,7 +50,10 @@ const Products = () => {
                       View All
                     </Link>
                   </div>
-                  <ProductList id={item.id} categoryName={item.name}></ProductList>
+                  <ProductList
+                    id={item.id}
+                    categoryName={item.name}
+                  ></ProductList>
                 </aside>
               ))}
             </main>
