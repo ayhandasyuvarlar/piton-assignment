@@ -1,17 +1,24 @@
 "use client";
+import { signUpUser } from "@/reducer/authSlice";
 import { Formik } from "formik";
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Register = () => {
+  const dispatch = useDispatch()
+  const { error, loading, msg } = useSelector(state => state.user)
+
   return (
     <div className="flex w-2/4">
       <Formik
         initialValues={{ email: "", password: "", name: "" }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
+        onSubmit={(values, actions) => {
+          actions.resetForm({
+            email: '',
+            password: '',
+            name: ''
+          })
+          dispatch(signUpUser(values))
         }}
       >
         {(formik) => (
@@ -59,7 +66,7 @@ const Register = () => {
             <div className="flex flex-col gap-2.5 mt-3">
               <label
                 className="text-xl font-semibold text-colorOne"
-                htmlFor="firstName"
+                htmlFor="password"
               >
                 Password
               </label>
@@ -74,12 +81,17 @@ const Register = () => {
                 <div>{formik.errors.password}</div>
               ) : null}
             </div>
-            <button
+            {!msg ? <button
               className="flex flex-row mt-5 rounded items-center justify-center w-96 h-16 bg-primaryTwo text-white text-2xl font-semibold"
               type="submit"
             >
-              Register
-            </button>
+              {loading === false ? 'Register' : 'Loading...'}
+            </button> : <button
+              className="flex flex-row mt-5 rounded items-center justify-center w-96 h-16 bg-primaryTwo text-white text-2xl font-semibold"
+              type="button"
+            >Enter login</button>}
+            {error && 'Bu email zaten var'}
+
           </form>
         )}
       </Formik>

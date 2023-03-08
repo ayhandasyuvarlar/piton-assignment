@@ -24,7 +24,7 @@ const Auth = () => {
       </div>
       <div>
         {isLogin && <Login />}
-        {!isLogin && <Register />}
+        {!isLogin && <Register/>}
         <button
           onClick={handlerClick}
           className="flex flex-row font-sans mt-1 rounded items-center justify-center w-96 h-16  text-checkBox border border-2 text-2xl font-semibold"

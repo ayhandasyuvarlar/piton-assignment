@@ -1,6 +1,8 @@
 "use client";
+import { signUpUser } from "@/reducer/authSlice";
 import { Formik } from "formik";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
   return (
@@ -9,9 +11,9 @@ const Login = () => {
         initialValues={{ email: "", password: "", rememberMe: false }}
         onSubmit={(values, { setSubmitting }) => {
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            // dispatch(signUpUser(values))
             setSubmitting(false);
-          }, 400);
+          }, 1000);
         }}
       >
         {(formik) => (
