@@ -10,6 +10,7 @@ const ProductList = ({ id, categoryName }) => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchProducts(id));
+
   }, [dispatch]);
   // burada gelen ürünleri  kategorisine ayırıyorum
   const categoryProducts = products.filter((item) => item.categoryId === id);
