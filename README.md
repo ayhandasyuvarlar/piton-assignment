@@ -80,5 +80,5 @@ export default ProductList;
 ![img](./public/e.PNG)
 ![img](./public/e2.PNG)
 ![img](./public/e3.PNG)
-
+![img](./public/e4.PNG)
 ### Projeyi bitirdim gerekli kontrolleri postman ile yaptım nextjs ile yaklaşık 3 hafta öğrenmeye başladım , tamamını bilmiyorum aynı şekilde tailwindcss ile de aynı şekilde , projemi inceledeğiniz için teşekkür ederim

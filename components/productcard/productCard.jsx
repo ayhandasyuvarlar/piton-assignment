@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const ProductCard = ({ name, id, author, price, categoryId, categoryName, cover }) => {
   const { url, loading, error } = useSelector(state => state.coverImage)
-  console.log(url)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchImageSlice(cover))

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineLeft, AiOutlineHeart } from "react-icons/ai";
 import Link from "next/link";
+import { fetchImageSlice } from "@/reducer/productCoverImageSlice";
 const productDetail = ({ params, searchParams }) => {
   const { productDetail } = useSelector((state) => state.productDetail);
   const { loading } = useSelector((state) => state.productDetail);
@@ -15,8 +16,10 @@ const productDetail = ({ params, searchParams }) => {
     categoryIdx,
     productIdx,
   };
+
   useEffect(() => {
     dispatch(fetchProductsDetails(data));
+    dispatch(fetchImageSlice(productDetail?.cover));
   }, [dispatch]);
 
   return (
@@ -45,7 +48,7 @@ const productDetail = ({ params, searchParams }) => {
               className=" bg-primaryOne h-80 flex items-center justify-center"
             >
               <img
-                src="/authImage.jpeg"
+                src={url}
                 alt=""
                 style={{ width: "320px", height: "450px" }}
               />
