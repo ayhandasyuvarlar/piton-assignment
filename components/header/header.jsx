@@ -21,10 +21,11 @@ const navigation = [
   },
 ];
 const Header = () => {
+
   const [token, setToken] = useState(localStorage.getItem('token') || null)
   useEffect(() => {
-    setToken(localStorage.getItem('token'))
-  }, [])
+    localStorage.setItem('token', token)
+  })
 
   return (
     token ? <main className="flex justify-center items-center gap-32 w-screen   h-28  m-auto">
