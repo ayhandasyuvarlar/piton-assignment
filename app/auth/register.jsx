@@ -19,6 +19,7 @@ const Register = () => {
             name: ''
           })
           dispatch(signUpUser(values))
+
         }}
       >
         {(formik) => (
@@ -87,10 +88,12 @@ const Register = () => {
             >
               {loading === false ? 'Register' : 'Loading...'}
             </button> : <button
-              className="flex flex-row mt-5 rounded items-center justify-center w-96 h-16 bg-primaryTwo text-white text-2xl font-semibold"
+              className="flex flex-row mt-5 rounded items-center justify-center w-96 h-16  text-black text-2xl font-semibold"
               type="button"
             >Enter login</button>}
-            {error && 'Bu email zaten var'}
+            {
+              error && error.message
+            }
 
           </form>
         )}

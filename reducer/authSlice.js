@@ -7,7 +7,7 @@ const initialState = {
   user: "",
   token: "",
   loading: false,
-  error: "",
+  error: null,
 };
 
 export const signUpUser = createAsyncThunk("signUp", async (data) => {
@@ -28,7 +28,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(signUpUser.pending, (state, action) => {
+    builder.addCase(signUpUser.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(signUpUser.fulfilled, (state, action) => {
@@ -38,8 +38,10 @@ const authSlice = createSlice({
       // } else {
       //   state.user = action.payload;
       // }
+      console.log(action.payload);
       state.loading = false;
       state.msg = action.payload;
+      state.error = null;
     });
     builder.addCase(signUpUser.rejected, (state, action) => {
       state.loading = false;
