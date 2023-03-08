@@ -1,19 +1,25 @@
 "use client";
-import { signUpUser } from "@/reducer/authSlice";
+import { signInUser } from "@/reducer/authSlice";
 import { Formik } from "formik";
+import Link from "next/link";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch()
+  const { error, msg, loading, homePage } = useSelector(state => state.user)
+
   return (
     <div className="flex w-2/4">
       <Formik
         initialValues={{ email: "", password: "", rememberMe: false }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            // dispatch(signUpUser(values))
-            setSubmitting(false);
-          }, 1000);
+        onSubmit={(values, action) => {
+          dispatch(signInUser(values))
+          action.resetForm({
+            email: '',
+            password: '',
+            rememberMe: false
+          })
         }}
       >
         {(formik) => (
@@ -67,12 +73,23 @@ const Login = () => {
               />
               <p className="text-checkBox text-base">Remember Me</p>
             </div>
-            <button
-              className="flex flex-row mt-24 rounded items-center justify-center w-96 h-16 bg-primaryTwo text-white text-2xl font-semibold"
-              type="submit"
-            >
-              Login
-            </button>
+            {
+              homePage ? <Link
+                href={'/'}
+                className="flex flex-row mt-24 rounded items-center justify-center w-96 h-16 bg-primaryTwo text-white text-2xl font-semibold"
+                type="submit"
+              >
+                Home Page
+              </Link> : <button
+
+                className="flex flex-row mt-24 rounded items-center justify-center w-96 h-16 bg-primaryTwo text-white text-2xl font-semibold"
+                type="submit"
+              >
+                {loading ? 'Loading...' : '  Login'}
+              </button>
+            }
+            {error === null ? null : error}
+            {msg === null ? null : msg}
           </form>
         )}
       </Formik>

@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 
 import Link from "next/link";
 const navigation = [
@@ -20,8 +21,13 @@ const navigation = [
   },
 ];
 const Header = () => {
+  const [token, setToken] = useState(localStorage.getItem('token') || null)
+  useEffect(() => {
+    setToken(localStorage.getItem('token'))
+  }, [])
+
   return (
-    <main className="flex justify-center items-center gap-32 w-screen   h-28  m-auto">
+    token ? <main className="flex justify-center items-center gap-32 w-screen   h-28  m-auto">
       <div className="w-auto border flex justify-center">
         <Link href={"/"}>
           <img src="/logo.svg" alt="" width={"45%"} />
@@ -61,7 +67,7 @@ const Header = () => {
           </Link>
         ))}
       </div>
-    </main>
+    </main> : ''
   );
 };
 

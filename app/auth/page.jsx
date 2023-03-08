@@ -5,7 +5,6 @@ import Register from "./register";
 
 const Auth = () => {
   const [isLogin, isRegister] = useState(true);
-
   const handlerClick = () => {
     isRegister(isLogin === true ? false : true);
   };
