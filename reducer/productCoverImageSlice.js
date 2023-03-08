@@ -17,7 +17,7 @@ const initialState = {
   loading: false,
 };
 
-const coverImageSlice = createSlice({
+const productCoverImageSlice = createSlice({
   name: "image",
   initialState,
   extraReducers: (builder) => {
@@ -35,4 +35,4 @@ const coverImageSlice = createSlice({
   },
 });
 
-export default coverImageSlice.reducer;
+export default productCoverImageSlice.reducer;
