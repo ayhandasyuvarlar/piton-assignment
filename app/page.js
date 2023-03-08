@@ -4,7 +4,7 @@ import Products from "@/app/features/product/products";
 
 const HomePage = () => {
   return (
-    <section className="w-10/12  m-auto">
+    <section className="w-11/12  m-auto">
       <Carousel />
       <Products />
     </section>
