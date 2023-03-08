@@ -1,7 +1,16 @@
+'use client'
+import { fetchImageSlice } from "@/reducer/productCoverImageSlice";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const ProductCard = ({ name , id , author , price ,  categoryId  , categoryName}) => {
+const ProductCard = ({ name, id, author, price, categoryId, categoryName, cover }) => {
+  const { url, loading, error } = useSelector(state => state.coverImage)
+  console.log(url)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(fetchImageSlice(cover))
+  })
   return (
     <>
       <Link
@@ -11,15 +20,14 @@ const ProductCard = ({ name , id , author , price ,  categoryId  , categoryName}
             name: name,
             author: author,
             categoryId: categoryId,
-            categoryName : categoryName 
+            categoryName: categoryName
           },
         }}
       >
-        <div  className={"w-80  h-52 flex  bg-primaryOne"}>
+        <div className={"w-80  h-52 flex  bg-primaryOne"}>
           <div className="w-2/4 h-52 flex items-center justify-center">
             <img
-              // src={`https://assign-api.piton.com.tr/api/rest/cover_image/${cover}`}
-              src="/authImage.jpeg"
+              src={url}
               alt={name}
               className={"w-32 h-44 object-cover rounded"}
             />
