@@ -42,7 +42,7 @@ export const fetchProducts = createAsyncThunk(
 );
 ```
 
-`````jsx
+```jsx
 "use client";
 import { fetchProducts, selectProducts } from "@/reducer/productsSlice";
 import React, { useEffect } from "react";
@@ -75,5 +75,10 @@ const ProductList = ({ id }) => {
 };
 
 export default ProductList;
-````;
-`````
+```
+
+![img](./public/e.PNG)
+![img](./public/e2.PNG)
+![img](./public/e3.PNG)
+
+### Projeyi bitirdim gerekli kontrolleri postman ile yaptım nextjs ile yaklaşık 3 hafta öğrenmeye başladım , tamamını bilmiyorum aynı şekilde tailwindcss ile de aynı şekilde , projemi inceledeğiniz için teşekkür ederim
